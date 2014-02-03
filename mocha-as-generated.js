@@ -133,8 +133,10 @@
                         // Make sure to forward the `this` context, since you can set variables and stuff on it to share
                         // within a suite.
 
+                        var noop = function () {};
+
                         if (fn.isGenerator()) {
-                            co(fn.call(this, function () {}))(function () { done(); }, done);
+                            co(fn.call(this, noop))(function (err) { done(err); }, done);
                             return;
                         }
 

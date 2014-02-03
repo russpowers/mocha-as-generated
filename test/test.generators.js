@@ -29,6 +29,29 @@ describe('Generators', function () {
         var test;
 
         beforeEach(function () {
+            return test = new Test('', function *() {
+                var result = yield dummyGeneratorResult();
+                result.should.equal(35);
+            });
+        });
+
+
+        it('Calls a generator function and assertion does not match', function *(done) {
+            test.run(function (err) {
+                err.actual.should.equal(25);
+                err.expected.should.equal(35);
+                done();
+            });
+        });
+
+    });
+
+    describe('Handle error with data', function () {
+
+        var error;
+        var test;
+
+        beforeEach(function () {
             error = new TypeError('Leonidas!');
             return test = new Test('', function *() {
                 throw error;
@@ -36,14 +59,11 @@ describe('Generators', function () {
         });
 
 
-        it('Calls a generator function and with an error', function *(done) {
-            try {
-                yield test.run();
-            } catch (err) {
-                err.message.should.equal(error);
-            }
-
-            done();
+        it.only('Calls a generator function and with an error', function *(done) {
+            test.run(function (err) {
+                err.should.equal(error);
+                done();
+            });
         });
 
     });
