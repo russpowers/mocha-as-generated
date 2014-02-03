@@ -1,4 +1,4 @@
-# Generator & Promise-Returning Tests for Mocha
+# Generator Tests for Mocha
 
 So you really like Mocha. But you also really like generators & promises. And you'd like to see
 support in Mocha for the promise-returning test style found in Buster and others, i.e. stuff like
