@@ -10,10 +10,13 @@ it("should be fulfilled with 5", function *() {
     result.should.equal(5);
 });
 
-it("should be fulfilled with 5", function () {
-    return promise.then(function (result) {
-        return result.should.equal(5);
-    });
+it("should throw an error", function *() {
+    try {
+        var someError = new TypeError('some error!');
+        var result = yield getError(someError);
+    } catch (error) {
+        error.should.equal(someError);
+    }
 });
 ```
 
