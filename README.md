@@ -1,7 +1,7 @@
 # Generator & Promise-Returning Tests for Mocha
 
-So you really like [Mocha][]. But you also really like [generators][] & [promises][]. And you'd like to see
-[support in Mocha][mocha-issue] for the promise-returning test style found in [Buster][] and others, i.e. stuff like
+So you really like Mocha. But you also really like generators & promises. And you'd like to see
+support in Mocha for the promise-returning test style found in Buster and others, i.e. stuff like
 
 ```js
 
@@ -19,7 +19,7 @@ it("should be fulfilled with 5", function () {
 
 ## Origin Note
 
-This is a fork of the [mocha-as-promised][https://github.com/domenic/mocha-as-promised] repo, but extended to also allow the use of generator functions as well.
+This is a fork of the mocha-as-promised - https://github.com/domenic/mocha-as-promised repo, but extended to also allow the use of generator functions as well.
 
 ## How to Use
 
