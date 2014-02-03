@@ -19,7 +19,7 @@ it("should be fulfilled with 5", function () {
 
 ## Origin Note
 
-This is a fork of the [mocha-as-generated][https://github.com/domenic/mocha-as-generated] repo, but extended to also allow the use of generator functions as well.
+This is a fork of the [mocha-as-promised][https://github.com/domenic/mocha-as-promised] repo, but extended to also allow the use of generator functions as well.
 
 ## How to Use
 
@@ -40,12 +40,11 @@ Do an `npm install mocha-as-generated --save-dev` to get up and running. Then:
 require("mocha-as-generated")();
 ```
 
-You can of course put this code in a common test fixture file; for an example, see
-[the Mocha as Generated tests themselves][fixturedemo].
+You can of course put this code in a common test fixture file.
 
 ### AMD
 
-Mocha as Generated supports being used as an [AMD][amd] module, registering itself anonymously. So, assuming you have
+Mocha as Generated supports being used as an AMD module, registering itself anonymously. So, assuming you have
 configured your loader to map the Mocha and Mocha as Generated files to the respective module IDs `"mocha"` and
 `"mocha-as-generated"`, you can use them as follows:
 
