@@ -1,8 +1,3 @@
-<a href="http://promises-aplus.github.com/promises-spec">
-    <img src="http://promises-aplus.github.com/promises-spec/assets/logo-small.png"
-         align="right" alt="Promises/A+ logo" />
-</a>
-
 # Generator & Promise-Returning Tests for Mocha
 
 So you really like [Mocha][]. But you also really like [generators][] & [promises][]. And you'd like to see
