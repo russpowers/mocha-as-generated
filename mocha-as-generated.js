@@ -1,4 +1,4 @@
-(function (mochaAsPromised) {
+(function (mochaAsGenerated) {
     "use strict";
 
     function findNodeJSMocha(moduleToTest, suffix, accumulator) {
@@ -49,19 +49,26 @@
                 }
             }
 
-            mochaModules.forEach(mochaAsPromised);
+            mochaModules.forEach(mochaAsGenerated);
         };
     } else if (typeof define === "function" && define.amd) {
         // AMD
         define(function () {
-            return mochaAsPromised;
+            return mochaAsGenerated;
         });
     } else {
         // Other environment (usually <script> tag): plug in global `Mocha` directly and automatically.
-        mochaAsPromised(Mocha);
+        mochaAsGenerated(Mocha);
     }
 }((function () {
     "use strict";
+
+    var co;
+
+    // If not running a require environment, co will be defined globally
+    if (typeof require === "function" && typeof exports === "object" && typeof module === "object") {
+        co = require("co");
+    }
 
     function getThen(x) {
         if ((typeof x === "object" || typeof x === "function") && x !== null) {
@@ -72,11 +79,21 @@
         }
     }
 
-    return function mochaAsPromised(mocha) {
-        if (mocha._mochaAsPromisedLoadedAlready) {
+    function assignGeneratorTest() {
+        if (typeof Function.prototype.isGenerator === "undefined") {
+            Function.prototype.isGenerator = function () {
+                return this.toString().indexOf("function*") === 0;
+            };
+        }
+    }
+
+    return function mochaAsGenerated(mocha) {
+        if (mocha._mochaAsGeneratedLoadedAlready) {
             return;
         }
-        mocha._mochaAsPromisedLoadedAlready = true;
+
+        assignGeneratorTest();
+        mocha._mochaAsGeneratedLoadedAlready = true;
 
         // Soooo this is an awesome hack.
 
@@ -115,6 +132,12 @@
                         // Run the original `fn`, passing along `done` for the case in which it's callback-asynchronous.
                         // Make sure to forward the `this` context, since you can set variables and stuff on it to share
                         // within a suite.
+
+                        if (fn.isGenerator()) {
+                            co(fn.call(this, function () {}))(function () { done(); }, done);
+                            return;
+                        }
+
                         var retVal = fn.call(this, done);
 
                         var then = getThen(retVal);

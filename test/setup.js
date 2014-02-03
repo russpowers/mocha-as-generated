@@ -1,7 +1,7 @@
 "use strict";
 
 var chai = require("chai");
-var mochaAsPromised = require("..");
+var mochaAsGenerated = require("..");
 
 chai.should();
-mochaAsPromised();
+mochaAsGenerated();
