@@ -1,20 +1,21 @@
 {
   "name": "mocha-as-generated",
-  "description": "Adds generator and “thenable” promise support to the Mocha test runner.",
+  "description": "Adds generator support to the Mocha test runner.",
   "keywords": [
-    "promises",
-    "promises-aplus",
+    "generator",
+    "generators",
+    "es7",
     "mocha",
     "testing"
   ],
-  "version": "2.0.0",
+  "version": "1.0.0",
   "author": "Darius Riggins <simovate@gmail.com>",
   "license": "WTFPL",
   "repository": {
     "type": "git",
-    "url": "https://github.com/domenic/mocha-as-generated"
+    "url": "https://github.com/dariusriggins/mocha-as-generated"
   },
-  "bugs": "http://github.com/domenic/mocha-as-generated/issues",
+  "bugs": "https://github.com/dariusriggins/mocha-as-generated/issues",
   "main": "mocha-as-generated.js",
   "scripts": {
     "test": "mocha --harmony",
