@@ -68,6 +68,9 @@
     // If not running a require environment, co will be defined globally
     if (typeof require === "function" && typeof exports === "object" && typeof module === "object") {
         co = require("co");
+    } else if (typeof window !== "undefined") {
+        // We still need to set the local variable in this case
+        co = window.co;
     }
 
     function getThen(x) {

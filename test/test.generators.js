@@ -59,7 +59,7 @@ describe('Generators', function () {
         });
 
 
-        it.only('Calls a generator function and with an error', function *(done) {
+        it('Calls a generator function and with an error', function *(done) {
             test.run(function (err) {
                 err.should.equal(error);
                 done();
