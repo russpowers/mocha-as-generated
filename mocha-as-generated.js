@@ -139,7 +139,14 @@
                         var noop = function () {};
 
                         if (fn.isGenerator()) {
-                            co(fn.call(this, noop))(function (err) { done(err); }, done);
+                            co(fn.call(this, noop))(function (err) {
+                                if (err instanceof Error || !err) {
+                                    done(err);
+                                } else {
+                                    done(err.stack || err.message || err);
+                                }
+                            }, done);
+
                             return;
                         }
 
