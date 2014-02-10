@@ -8,7 +8,7 @@
     "mocha",
     "testing"
   ],
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Darius Riggins <simovate@gmail.com>",
   "license": "WTFPL",
   "repository": {

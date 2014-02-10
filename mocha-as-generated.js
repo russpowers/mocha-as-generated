@@ -143,7 +143,9 @@
                                 if (err instanceof Error || !err) {
                                     done(err);
                                 } else {
-                                    done(err.stack || err.message || err);
+                                    var newError = new Error(err);
+                                    newError.stack = err.stack; // Preserve original stack trace.
+                                    done(newError);
                                 }
                             }, done);
 
